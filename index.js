@@ -112,6 +112,7 @@ starCountRef.on('value', function(snapshot) {
             },
 
         },
+        // 分類Top.Bottom,Shoes
         computed: {
             products: function() {
                 if (this.picked == 'All') {
