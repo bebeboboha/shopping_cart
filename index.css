@@ -44,7 +44,7 @@
 }
 
 #product img {
-    width: 100%;
+    height: 220px;
 }
 
 .product {
@@ -99,7 +99,7 @@ li p {
     font-size: 18px;
 }
 
-.dropdown > button {
+.dropdown>button {
     border: none;
     background-color: #fff;
     padding: 5px 15px;
@@ -127,7 +127,6 @@ li a button {
     margin-right: 3px;
 }
 
-
 .navbar-right {
     margin: 0px;
     float: right;
@@ -145,9 +144,11 @@ li a button {
     margin-right: 8px;
     margin-left: 4px;
 }
-p select{
+
+p select {
     margin-left: 20px;
 }
-.size{
+
+.size {
     padding-left: 14px;
 }

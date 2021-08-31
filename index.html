@@ -18,7 +18,8 @@
         <!-- 右選單 -->
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <button data-toggle="collapse" data-target=".navbar-ex2-collapse"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+                <button data-toggle="collapse" data-target=".navbar-ex2-collapse"><i
+                        class="glyphicon glyphicon-shopping-cart"></i></button>
                 <ul class="dropdown-menu navbar-ex2-collapse">
                     <li v-for="buy in buys">
                         <a>
@@ -29,7 +30,6 @@
                                 <option value="{{buy.allsize[1]}}">{{buy.allsize[1]}}</option>
                                 <option value="{{buy.allsize[2]}}">{{buy.allsize[2]}}</option>
                                 <option value="{{buy.allsize[3]}}">{{buy.allsize[3]}}</option>
-                                <option value="{{buy.allsize[4]}}">{{buy.allsize[4]}}</option>
                             </select>
                         </p>
                         <p>
@@ -82,8 +82,10 @@
             </div>
         </div>
         <!-- 上下頁控制區 -->
-        <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span
+                class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#carousel-id" data-slide="next"><span
+                class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
     <div class="container">
         <div class="row"></div>
@@ -107,7 +109,6 @@
                     <option value="{{product.size[1]}}">{{product.size[1]}}</option>
                     <option value="{{product.size[2]}}">{{product.size[2]}}</option>
                     <option value="{{product.size[3]}}">{{product.size[3]}}</option>
-                    <option value="{{product.size[4]}}">{{product.size[4]}}</option>
                 </select>
                 <p>type: {{product.type}}</p>
                 <input type="text" v-model="product.name" class="hide">

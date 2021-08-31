@@ -1,20 +1,23 @@
 // make sure to set this synchronously immediately after loading Vue
 Vue.config.devtools = true
     // Initialize Firebase
-var config = {
+const firebaseConfig = {
     apiKey: "AIzaSyC8suLxUjAuLXaMYya3-wC2lPldcVQOpQU",
     authDomain: "shopping-cart-cbc46.firebaseapp.com",
     databaseURL: "https://shopping-cart-cbc46.firebaseio.com",
+    projectId: "shopping-cart-cbc46",
     storageBucket: "shopping-cart-cbc46.appspot.com",
-    messagingSenderId: "792231392315"
+    messagingSenderId: "792231392315",
+    appId: "1:792231392315:web:31bf8cc05e33f5f005d81e"
 };
 
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 var db = new firebase.database();
 
-var starCountRef = firebase.database().ref('product');
+var starCountRef = firebase.database().ref('products');
 starCountRef.on('value', function(snapshot) {
     //updateStarCount(postElement, snapshot.val());
+
     var productss = snapshot.val();
     var buys = []
     var total = 0
@@ -30,28 +33,32 @@ starCountRef.on('value', function(snapshot) {
             picked: 'Top'
         },
         methods: {
-            add: function(name, num, money,size,product) {
+            add: function(name, num, money, size, product) {
                 var found = false
-                if (num < 0) {
+                if (num < 0 && !isNaN(num)) {
                     alert('請輸入至少一件')
-                } else if (isNaN(num)) {
-                    alert('不要惡搞誒')
                 } else if (size != "") {
                     total = total + num * money
                     totalnum = totalnum + num * 1
                     for (var i = 0; i < buys.length; i++) {
                         if (buys[i].name === name) {
-                          if(buys[i].size === size){
-                            buys[i].num = buys[i].num * 1 + num * 1
-                            buys[i].money = buys[i].money * 1 + money * num
-                            found = true
-                            break
-                          }
-                            
+                            if (buys[i].size === size) {
+                                buys[i].num = buys[i].num * 1 + num * 1
+                                buys[i].money = buys[i].money * 1 + money * num
+                                found = true
+                                break
+                            }
+
                         }
                     }
                     if (!found) {
-                        buys.push({ name: name,size:size, num: num, money: num * money ,allsize:product.size})
+                        buys.push({
+                            name: name,
+                            size: size,
+                            num: num,
+                            money: num * money,
+                            allsize: product.size
+                        })
                     }
 
                     this.$set('buys', buys)
@@ -102,12 +109,12 @@ starCountRef.on('value', function(snapshot) {
             },
             ladd: function(buy) {
                 var ladd = buys.indexOf(buy)
-                    buys[ladd].num = buys[ladd].num * 1 +1
-                    buys[ladd].money = buys[ladd].money + buys[ladd].money / (buys[ladd].num - 1) 
-                    total = total + buys[ladd].money / (buys[ladd].num)
-                    this.$set('total', total)
-                    totalnum = totalnum * 1 + 1 
-                    this.$set('totalnum', totalnum)
+                buys[ladd].num = buys[ladd].num * 1 + 1
+                buys[ladd].money = buys[ladd].money + buys[ladd].money / (buys[ladd].num - 1)
+                total = total + buys[ladd].money / (buys[ladd].num)
+                this.$set('total', total)
+                totalnum = totalnum * 1 + 1
+                this.$set('totalnum', totalnum)
 
             },
 
